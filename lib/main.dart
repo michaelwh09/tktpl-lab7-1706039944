@@ -51,9 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'Hello, you have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 350),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return ScaleTransition(child: child, scale: animation);
+              },
+              child: Text(
+                '$_counter',
+                key: ValueKey<int>(_counter),
+                style: Theme.of(context).textTheme.headline4,
+              ),
             ),
           ],
         ),
